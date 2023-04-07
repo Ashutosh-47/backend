@@ -27,6 +27,7 @@ app.use ( express.json() )
 })
 
 
+app.get("/" , ( req, res ) => res.send("Working"))
 
 //------------------------------------------------------ Post for LogIn ------------------------------------------------
 app.post ( "/" , async ( req , res ) => {
@@ -39,6 +40,8 @@ app.post ( "/" , async ( req , res ) => {
            if ( checkEmail )  res.status(200).json ( {success: true} )                           // If exist
 
            else  res.status(200).json ( { success: false} )
+
+       
     }
     catch ( err ) { 
         console.log (  err ) 
