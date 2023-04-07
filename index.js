@@ -13,21 +13,35 @@ app.use ( express.json() )
 
  // app.use( cors )
 
- app.use ( ( req , res , next ) => {
+//  app.use ( ( req , res , next ) => {
 
-    // localhost: 3000 because our react app is running on 3000
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    )
+//     // localhost: 3000 because our react app is running on 3000
+//     res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000")
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested-With, Content-Type, Accept"
+//     )
 
-    next()
+//     next()
   
-})
+// })
+
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+  });
+  
 
 
 app.get("/" , ( req, res ) => res.send("Working"))
+
+//https://cars.adaptable.app
+
+
 
 //------------------------------------------------------ Post for LogIn ------------------------------------------------
 app.post ( "/" , async ( req , res ) => {
